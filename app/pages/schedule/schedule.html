@@ -4,32 +4,19 @@
       <ion-icon name="menu"></ion-icon>
     </button>
 
-    <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
-      <ion-segment-button value="all">
-        All
-      </ion-segment-button>
-      <ion-segment-button value="favorites">
-        Favorites
-      </ion-segment-button>
-    </ion-segment>
-
     <ion-buttons end>
       <button (click)="presentFilter()">
         <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
-
-  <ion-toolbar no-border-top>
-    <ion-searchbar primary
-                   [(ngModel)]="queryText"
-                   (ionInput)="updateSchedule()"
-                   placeholder="Search">
-    </ion-searchbar>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-searchbar [(ngModel)]="queryText" (ionInput)="updateSchedule()" placeholder="Search">
+  </ion-searchbar>
+
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 
     <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
@@ -65,8 +52,18 @@
   </ion-list>
 
   <ion-list-header [hidden]="shownSessions > 0">
-      No Sessions Found
+    No Sessions Found
   </ion-list-header>
 
-
 </ion-content>
+
+<ion-toolbar id="segmentToolbar">
+  <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+    <ion-segment-button value="all">
+      All
+    </ion-segment-button>
+    <ion-segment-button value="favorites">
+      Favorites
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>

@@ -23,3 +23,13 @@ $categories: (
    }
   }
 }
+
+#segmentToolbar {
+    position: absolute;
+    bottom: 0px;
+    min-height: 3rem;
+}
+
+ion-segment-button {
+  border-bottom: none !important;
+}
